@@ -16,12 +16,12 @@ const Navbar = ({ setToggleSearch }: Props) => {
       >
         <div className="flex justify-between items-center px-4 py-4">
           <img
-            src="/src/assets/menu.svg"
+            src="/public/assets/menu.svg"
             alt="menu"
             className="cursor-pointer"
           />
           <img
-            src="/src/assets/search.svg"
+            src="/public/assets/search.svg"
             alt="search"
             onClick={() => setToggleSearch(true)}
             className="cursor-pointer"
@@ -29,7 +29,7 @@ const Navbar = ({ setToggleSearch }: Props) => {
         </div>
         <Link to="/">
           <img
-            src="/src/assets/ngmusic.svg"
+            src="/public/assets/ngmusic.svg"
             alt="logo"
             className="absolute top-7 left-1/2 transform -translate-x-1/2 cursor-pointer"
           />

@@ -25,7 +25,7 @@ const SearchBar = ({ searchProp, setToggleSearch }: Props) => {
     <div className="bg-gray-900 bg-opacity-80 w-screen h-screen absolute z-100 flex flex-col items-center justify-center gap-3">
       <img
         onClick={() => setToggleSearch(false)}
-        src="/src/assets/x.svg"
+        src="/public/assets/x.svg"
         alt="close"
         className="absolute top-6 right-6"
       />

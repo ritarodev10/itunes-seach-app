@@ -19,7 +19,7 @@ const Search = () => {
       <div className="flex flex-col h-full w-full max-w-md m-auto">
         <div className="flex justify-center items-center h-full">
           <div>
-            <img src="/src/assets/logo.svg" alt="logo" />
+            <img src="/public/assets/logo.svg" alt="logo" />
           </div>
         </div>
         <div className="flex flex-col gap-[15px] justify-center items-center ">
