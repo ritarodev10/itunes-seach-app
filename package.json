@@ -1,6 +1,5 @@
 {
   "name": "itunes-seacrh-app",
-  "homepage": "http://itunes-search.ritaro.dev",
   "private": true,
   "version": "0.0.0",
   "type": "module",
