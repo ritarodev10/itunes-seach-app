@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const PUBLIC_URL = import.meta.env.VITE_APP_PUBLIC_URL;
 
@@ -8,7 +8,7 @@ type Props = {
 };
 const Navbar = ({ setToggleSearch }: Props) => {
   return (
-    <div>
+    <div className="relative z-10">
       <div
         className="fixed w-full h-[60px] bg-gradient-to-r from-[#712bda] to-[#a45deb] shadow-md"
         style={{
@@ -37,7 +37,6 @@ const Navbar = ({ setToggleSearch }: Props) => {
           />
         </Link>
       </div>
-      <Outlet />
     </div>
   );
 };

@@ -24,7 +24,7 @@ const SearchBar = ({ searchProp, setToggleSearch }: Props) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-gray-900 bg-opacity-90 w-screen h-screen absolute z-100 flex flex-col items-center justify-center gap-3"
+      className="bg-gray-900 bg-opacity-90 w-screen h-screen absolute z-10 flex flex-col items-center justify-center gap-3"
     >
       <img
         onClick={() => setToggleSearch(false)}

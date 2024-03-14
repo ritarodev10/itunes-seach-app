@@ -45,7 +45,7 @@ const Result = () => {
   }
 
   return (
-    <>
+    <div className={`relative ${toggleSearch && "overflow-hidden"}`}>
       <Navbar setToggleSearch={setToggleSearch} />
       {toggleSearch && (
         <SearchBar searchProp={searchTerm} setToggleSearch={setToggleSearch} />
@@ -67,11 +67,18 @@ const Result = () => {
                 key={i}
                 className="card-item w-full flex gap-3 p-3 rounded-xl shadow-card"
               >
-                <div className="card-item__img">
+                <div className="card-item__img relative w-[100px] h-[100px] rounded-[10px] sm:w-[150px] sm:h-[150px] overflow-hidden">
                   <img
                     src={music.artworkUrl100}
                     alt="album"
-                    className="w-[100px] h-[100px] rounded-[10px] sm:w-[150px] sm:h-[150px]"
+                    className="w-full h-full"
+                  />
+                  <img
+                    src={
+                      import.meta.env.VITE_APP_PUBLIC_URL + "/assets/play.svg"
+                    }
+                    alt="play"
+                    className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
                   />
                 </div>
                 <div className="card-item__info flex-1 flex flex-col justify-between">
@@ -86,23 +93,32 @@ const Result = () => {
                   <div className="w-full flex justify-between">
                     <Button variant="genre">{music.primaryGenreName}</Button>
                     <div className="flex items-center gap-1">
-                      <img
-                        src={
-                          import.meta.env.VITE_APP_PUBLIC_URL +
-                          "/assets/dollar.svg"
-                        }
-                        alt="price"
-                      />
-                      <p className="text-sm text-[#f5b014] font-bold">
-                        {music.trackPrice}
-                      </p>
+                      {music.trackPrice ? (
+                        <>
+                          <img
+                            src={
+                              import.meta.env.VITE_APP_PUBLIC_URL +
+                              "/assets/dollar.svg"
+                            }
+                            alt="price"
+                          />
+                          <p className="text-sm text-[#f5b014] font-bold">
+                            {music.trackPrice}
+                          </p>
+                        </>
+                      ) : (
+                        <p className="text-sm text-[#f5b014] font-bold">
+                          Free!
+                        </p>
+                      )}
                     </div>
                   </div>
                 </div>
               </div>
             ))}
             {isLoading && <div>Loading...</div>}
-            {!isLoading && (
+            {!isLoading && musics.length === 0 && <div>No data found</div>}
+            {!isLoading && musics.length > 0 && (
               <Button onClick={handleLoadMore} variant="loadMore">
                 Load More
               </Button>
@@ -110,7 +126,7 @@ const Result = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

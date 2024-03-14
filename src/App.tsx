@@ -16,9 +16,7 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/" element={<Navigate to="/search" />} />
           <Route path="/search" element={<SearchPage />} />
-          {/* <Route element={<Navbar />}> */}
           <Route path="/results" element={<ResultPage />} />
-          {/* </Route> */}
         </Routes>
       </Router>
     </QueryClientProvider>
