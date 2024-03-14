@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 
-const API_URL = "https://itunes.apple.com/search?";
+const API_URL = import.meta.env.VITE_APP_API_URL;
 
 type Music = {
   artistName: string;
@@ -28,7 +28,7 @@ const fetchMusic = async (
 export const useFetchMusic = (searchTerm: string, limit: number) => {
   return useQuery({
     queryKey: ["musics", searchTerm, limit],
-    queryFn: () => fetchMusic(searchTerm, limit), // Pass searchTerm and limit as separate arguments
+    queryFn: () => fetchMusic(searchTerm, limit),
     enabled: !!searchTerm,
   });
 };

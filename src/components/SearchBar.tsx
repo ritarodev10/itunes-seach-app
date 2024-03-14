@@ -9,23 +9,26 @@ type Props = {
 
 const SearchBar = ({ searchProp, setToggleSearch }: Props) => {
   const navigate = useNavigate();
-
   const [searchTerm, setSearchTerm] = useState(searchProp || "");
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
     navigate(`/results?term=${encodeURIComponent(searchTerm)}`);
     setToggleSearch(false);
   };
 
   return (
-    <div className="bg-gray-900 bg-opacity-80 w-screen h-screen absolute z-100 flex flex-col items-center justify-center gap-3">
+    <form
+      onSubmit={handleSubmit}
+      className="bg-gray-900 bg-opacity-90 w-screen h-screen absolute z-100 flex flex-col items-center justify-center gap-3"
+    >
       <img
         onClick={() => setToggleSearch(false)}
-        src="/public/assets/x.svg"
+        src={import.meta.env.VITE_APP_PUBLIC_URL + "/assets/x.svg"}
         alt="close"
         className="absolute top-6 right-6"
       />
@@ -36,10 +39,10 @@ const SearchBar = ({ searchProp, setToggleSearch }: Props) => {
         value={searchTerm}
         onChange={handleSearch}
       />
-      <Button variant="searchTwo" onClick={handleSubmit} disabled={!searchTerm}>
+      <Button type="submit" variant="searchTwo" disabled={!searchTerm}>
         Search
       </Button>
-    </div>
+    </form>
   );
 };
 

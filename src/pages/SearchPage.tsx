@@ -10,7 +10,8 @@ const Search = () => {
     setSearchTerm(e.target.value);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
     navigate(`/results?term=${encodeURIComponent(searchTerm)}`);
   };
 
@@ -19,24 +20,26 @@ const Search = () => {
       <div className="flex flex-col h-full w-full max-w-md m-auto">
         <div className="flex justify-center items-center h-full">
           <div>
-            <img src="/public/assets/logo.svg" alt="logo" />
+            <img
+              src={import.meta.env.VITE_APP_PUBLIC_URL + "/assets/logo.svg"}
+              alt="logo"
+            />
           </div>
         </div>
-        <div className="flex flex-col gap-[15px] justify-center items-center ">
+        <form
+          className="flex flex-col gap-[15px] justify-center items-center"
+          onSubmit={handleSubmit}
+        >
           <input
-            className="flex text-center h-10 sm:h-12 w-[280px] sm:w-full rounded-[20px] sm:rounded-full text-sm placeholder-gray-500"
+            className="flex text-center h-10 sm:h-12 w-[280px] sm:w-full rounded-[20px] sm:rounded-full text-sm placeholder-gray-400"
             placeholder="Artist/Album/Title"
             value={searchTerm}
             onChange={handleSearch}
           />
-          <Button
-            variant="searchOne"
-            onClick={handleSubmit}
-            disabled={!searchTerm}
-          >
+          <Button type="submit" variant="searchOne" disabled={!searchTerm}>
             Search
           </Button>
-        </div>
+        </form>
       </div>
     </div>
   );

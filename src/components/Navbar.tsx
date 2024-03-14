@@ -1,6 +1,8 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
 
+const PUBLIC_URL = import.meta.env.VITE_APP_PUBLIC_URL;
+
 type Props = {
   setToggleSearch: React.Dispatch<React.SetStateAction<boolean>>;
 };
@@ -16,12 +18,12 @@ const Navbar = ({ setToggleSearch }: Props) => {
       >
         <div className="flex justify-between items-center px-4 py-4">
           <img
-            src="/public/assets/menu.svg"
+            src={PUBLIC_URL + `assets/menu.svg`}
             alt="menu"
             className="cursor-pointer"
           />
           <img
-            src="/public/assets/search.svg"
+            src={PUBLIC_URL + `assets/search.svg`}
             alt="search"
             onClick={() => setToggleSearch(true)}
             className="cursor-pointer"
@@ -29,7 +31,7 @@ const Navbar = ({ setToggleSearch }: Props) => {
         </div>
         <Link to="/">
           <img
-            src="/public/assets/ngmusic.svg"
+            src={PUBLIC_URL + `assets/ngmusic.svg`}
             alt="logo"
             className="absolute top-7 left-1/2 transform -translate-x-1/2 cursor-pointer"
           />

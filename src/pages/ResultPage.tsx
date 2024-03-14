@@ -86,7 +86,13 @@ const Result = () => {
                   <div className="w-full flex justify-between">
                     <Button variant="genre">{music.primaryGenreName}</Button>
                     <div className="flex items-center gap-1">
-                      <img src="/public/assets/dollar.svg" alt="price" />
+                      <img
+                        src={
+                          import.meta.env.VITE_APP_PUBLIC_URL +
+                          "/assets/dollar.svg"
+                        }
+                        alt="price"
+                      />
                       <p className="text-sm text-[#f5b014] font-bold">
                         {music.trackPrice}
                       </p>
